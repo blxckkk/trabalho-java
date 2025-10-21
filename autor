@@ -1,0 +1,70 @@
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Autor implements Serializable {
+    private static final long serialVersionUID = 1L;
+    
+    private String codigo;
+    private String nome;
+    private String nacionalidade;
+    private List<String> isbnLivros;
+    
+    public Autor(String codigo, String nome, String nacionalidade) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.nacionalidade = nacionalidade;
+        this.isbnLivros = new ArrayList<>();
+    }
+    
+    public String getCodigo() {
+        return codigo;
+    }
+    
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+    
+    public String getNome() {
+        return nome;
+    }
+    
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    
+    public String getNacionalidade() {
+        return nacionalidade;
+    }
+    
+    public void setNacionalidade(String nacionalidade) {
+        this.nacionalidade = nacionalidade;
+    }
+    
+    public List<String> getIsbnLivros() {
+        return isbnLivros;
+    }
+    
+    public void adicionarLivro(String isbn) {
+        if (!isbnLivros.contains(isbn)) {
+            isbnLivros.add(isbn);
+        }
+    }
+    
+    @Override
+    public String toString() {
+        return "Código: " + codigo + " | Nome: " + nome + 
+               " | Nacionalidade: " + nacionalidade + 
+               " | Livros publicados: " + isbnLivros.size();
+    }
+    
+    public String detalhes() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n--- DETALHES DO AUTOR ---\n");
+        sb.append("Código: ").append(codigo).append("\n");
+        sb.append("Nome: ").append(nome).append("\n");
+        sb.append("Nacionalidade: ").append(nacionalidade).append("\n");
+        sb.append("Total de livros: ").append(isbnLivros.size()).append("\n");
+        return sb.toString();
+    }
+}
